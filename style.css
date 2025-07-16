@@ -1,0 +1,82 @@
+body {
+  font-family: sans-serif;
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+textarea, input, button {
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+  box-sizing: border-box;
+}
+
+.hidden {
+  display: none;
+}
+
+.success {
+  color: green;
+}
+
+.error {
+  color: red;
+}
+
+button {
+  padding: 6px 12px;
+  margin-top: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+ul {
+  padding-left: 18px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+#answerList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+  margin-top: 15px;
+  align-items: start;
+}
+
+.answer-card {
+  position: relative;
+  padding: 24px 10px 10px 10px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  min-height: 60px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  transition: 0.2s ease;
+}
+
+.answer-card:hover {
+  transform: scale(1.02);
+}
+
+.answer-card button {
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  background: none;
+  border: none;
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #dc2626;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.answer-content {
+  white-space: pre-wrap;
+  text-align: left;
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Q&A Lite</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <h2>Aplikasi Q&A Lite</h2>
+
+  <!-- Admin Form -->
+  <div id="adminForm">
+    <textarea id="questionInput" placeholder="Tulis pertanyaan..."></textarea>
+    <button onclick="createQuestion()">Buat Pertanyaan</button>
+    <div id="adminMessage"></div>
+    <p id="shareLink" class="hidden"></p>
+  </div>
+
+  <!-- Siswa Form -->
+  <div id="studentForm" class="hidden">
+    <p><strong>Pertanyaan:</strong> <span id="questionText"></span></p>
+    <textarea id="answerInput" placeholder="Tulis jawaban..."></textarea>
+    <button onclick="submitAnswer()">Kirim Jawaban</button>
+    <div id="studentMessage"></div>
+  </div>
+</body>
+</html>
