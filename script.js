@@ -68,8 +68,8 @@ function createQuestion() {
   }).then(() => {
     const id = newRef.key;
     const url = `${location.href.split('?')[0]}?id=${id}`;
-    shareLink.textContent = `Link untuk siswa: ${url}`;
-    shareLink.classList.remove('hidden');
+    shareLink.textContent = `${url}`;
+    document.getElementById('shareLinkWrapper').classList.remove('hidden');
     adminMessage.textContent = 'Pertanyaan berhasil dibuat.';
     adminMessage.className = 'success';
     questionInput.value = '';
@@ -145,5 +145,13 @@ function listenForAnswers(questionId) {
     } else {
       answerList.innerHTML = '<li>Belum ada jawaban.</li>';
     }
+  });
+}
+function copyLink() {
+  const link = document.getElementById('shareLink').textContent;
+  navigator.clipboard.writeText(link).then(() => {
+    const notice = document.getElementById('copyNotice');
+    notice.classList.remove('hidden');
+    setTimeout(() => notice.classList.add('hidden'), 2000);
   });
 }
