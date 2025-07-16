@@ -16,7 +16,11 @@
     <textarea id="questionInput" placeholder="Tulis pertanyaan..."></textarea>
     <button onclick="createQuestion()">Buat Pertanyaan</button>
     <div id="adminMessage"></div>
-    <p id="shareLink" class="hidden"></p>
+    <div id="shareLinkWrapper" class="hidden">
+      <p id="shareLink"></p>
+      <button onclick="copyLink()">📋 Salin Link</button>
+      <span id="copyNotice" class="hidden" style="font-size: 0.9em; color: green;">✔ Link disalin!</span>
+    </div>
   </div>
 
   <!-- Siswa Form -->
