@@ -2,6 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Q&A Lite</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
@@ -30,5 +31,11 @@
     <button onclick="submitAnswer()">Kirim Jawaban</button>
     <div id="studentMessage"></div>
   </div>
+
+  <!-- Modal Tampilkan Jawaban -->
+<div id="modal" class="hidden">
+  <div id="modalContent"></div>
+</div>
+
 </body>
 </html>
