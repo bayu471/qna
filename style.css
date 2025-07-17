@@ -1,11 +1,10 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap');
 
 body {
   font-family: 'Nunito', sans-serif;
   font-size: 16px;
   background-color: #f9fafb;
-  max-width: 800px;
+  max-width: 600px;
   margin: auto;
   padding: 20px;
   color: #111827;
@@ -38,11 +37,15 @@ button {
   color: white;
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
 button:hover {
   background-color: #2563eb;
+}
+
+button:active {
+  transform: scale(0.97);
 }
 
 .hidden {
@@ -58,22 +61,24 @@ button:hover {
 }
 
 ul {
-  padding-left: 18px;
+  padding-left: 0;
 }
 
 li {
   margin-bottom: 8px;
+  list-style: none;
 }
 
 #answerList {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 12px;
   margin-top: 15px;
-  align-items: start;
+  padding: 0;
 }
 
 .answer-card {
+  width: 100%;
   position: relative;
   background: #fef3c7;
   padding: 24px 10px 10px 10px;
@@ -83,61 +88,46 @@ li {
   overflow-wrap: break-word;
   word-break: break-word;
   transition: transform 0.2s ease;
+  animation: fadeInUp 0.4s ease both;
+  box-sizing: border-box;
 }
 
 .answer-card:hover {
   transform: scale(1.02);
+  background-color: #ffffffaa;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .answer-card button {
   position: absolute;
-  top: 6px;
-  left: 8px;
+  top: 0px;        /* Naikkan sedikit biar sejajar */
+  right: 8px;       /* Posisikan tetap di kiri */
+
+  width: 24px;
+  height: 24px;
+  overflow: hidden; /* ⬅ Tambahan penting */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   background: none;
   border: none;
   font-weight: bold;
   font-size: 1.2em;
   color: #dc2626;
   cursor: pointer;
-  padding: 0;
+  padding: 5px 0px 30px 0px;
   line-height: 1;
 }
+
+
 
 .answer-content {
   white-space: pre-wrap;
   text-align: left;
 }
 
-/* Responsive tweaks */
-@media (max-width: 600px) {
-  h2 {
-    font-size: 1.5em;
-  }
-
-  .answer-card {
-    font-size: 0.95em;
-  }
-
-  button {
-    font-size: 1em;
-  }
-}
-/* 1. Jawaban muncul: fade + naik sedikit */
-.answer-card {
-  animation: fadeInUp 0.4s ease both;
-}
-
-/* 2. Hover tombol lebih lembut */
-button {
-  transition: background-color 0.2s ease, transform 0.1s ease;
-}
-
-/* 3. Efek klik */
-button:active {
-  transform: scale(0.97);
-}
-
-/* Keyframe untuk animasi masuk */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -148,3 +138,67 @@ button:active {
     transform: translateY(0);
   }
 }
+
+@media (max-width: 600px) {
+  body {
+    padding: 12px;
+    font-size: 17px;
+  }
+
+  h2 {
+    font-size: 1.5em;
+    text-align: center;
+  }
+
+  textarea, input, button {
+    font-size: 1em;
+    padding: 12px;
+  }
+
+  .answer-card {
+    font-size: 0.95em;
+    padding: 20px 10px 10px;
+  }
+
+  #shareLinkWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+#modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+#modalContent {
+  background: #fffbe6;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 90%;
+  max-height: 80%;
+  overflow-y: auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  font-size: 1.2em;
+}
+
+#modal.hidden {
+  display: none;
+}
+
+#modalContent:after {
+  content: "⨉";
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  font-size: 1.4em;
+  cursor: pointer;
+  color: #d32f2f;
+}
+
